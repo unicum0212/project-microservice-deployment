@@ -1,0 +1,16 @@
+appName: auth-api
+appImage: 648494430292.dkr.ecr.eu-central-1.amazonaws.com/auth-api
+appVersion: latest
+appReplicas: 1
+containerPort: 8081
+containerEnvVars:
+- name: AUTH_API_PORT
+  value: "8081"
+- name: USERS_API_ADDRESS
+  value: "http://users-api:8083"
+- name: ZIPKIN_URL
+  value: http://zipkin:9411/api/v2/spans 
+- name: JWT_SECRET
+  value: myfancysecret
+
+servicePort: 8081

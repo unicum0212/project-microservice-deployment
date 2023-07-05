@@ -1,0 +1,9 @@
+appName: zipkin
+appImage: openzipkin/zipkin
+appVersion: latest
+appReplicas: 1
+containerPort: 9411
+containerEnvVars:
+
+serviceType: LoadBalancer
+servicePort: 9411

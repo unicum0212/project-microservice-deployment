@@ -1,0 +1,13 @@
+appName: serviceName
+appImage: someImage
+appVersion: v0.0.0
+appReplicas: 1
+containerPort: 8080
+containerEnvVars:
+- name: VAR_ONE
+  value: "valueOne"
+- name: VAR_TWO
+  value: "valueTwo"
+
+servicePort: 8080
+serviceType: ClusterIP

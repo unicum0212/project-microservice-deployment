@@ -1,0 +1,35 @@
+releases:
+  - name: redis-queue
+    chart: charts/redis-queue
+    values:
+      - values/redis.yaml
+  
+  - name: log-message-processor
+    chart: charts/log-message-processor
+    values:
+      - values/log-message-processor.yaml
+
+  - name: todos-api
+    chart: charts/microservices
+    values:
+      - values/todos-api.yaml
+
+  - name: users-api
+    chart: charts/microservices
+    values:
+      - values/users-api.yaml
+
+  - name: auth-api
+    chart: charts/microservices
+    values:
+      - values/auth-api.yaml
+
+  - name: frontend
+    chart: charts/microservices
+    values:
+      - values/frontend.yaml
+
+  - name: zipkin
+    chart: charts/microservices
+    values:
+      - values/zipkin.yaml

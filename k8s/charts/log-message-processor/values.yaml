@@ -1,0 +1,9 @@
+appName: serviceName
+appImage: someImage
+appVersion: v0.0.0
+appReplicas: 1
+containerEnvVars:
+- name: VAR_ONE
+  value: "valueOne"
+- name: VAR_TWO
+  value: "valueTwo"
