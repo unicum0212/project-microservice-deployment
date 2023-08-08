@@ -5,5 +5,5 @@ appReplicas: 1
 containerPort: 9411
 containerEnvVars:
 
-serviceType: LoadBalancer
+#serviceType: LoadBalancer
 servicePort: 9411

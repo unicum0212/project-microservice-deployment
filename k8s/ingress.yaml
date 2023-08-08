@@ -1,0 +1,26 @@
+# kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-hosts
+
+spec:
+  rules:
+  - host: kubernetes.devdimaops.tech
+    http:
+      paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: frontend
+              port:
+                number: 80
+        - pathType: Prefix
+          path: "/zipkin"
+          backend:
+            service:
+              name: zipkin
+              port:
+                number: 9411

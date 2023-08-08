@@ -13,5 +13,5 @@ containerEnvVars:
 - name: ZIPKIN_URL
   value: http://zipkin:9411/api/v2/spans
 
-servicePort: 8080
-serviceType: LoadBalancer
+servicePort: 80
+#serviceType: LoadBalancer
