@@ -8,7 +8,7 @@ pipeline {
         stage('build images') {
             steps {
                 echo "building the docker images.."
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-creds', url: 'https://github.com/unicum0212/microservice-project-app.git']])
+                git branch: 'master', credentialsId: 'github-creds', url: 'https://github.com/unicum0212/microservice-project-app.git'
                 dir('microservice-project-app') {
                     sh "ls -l"
                 }
