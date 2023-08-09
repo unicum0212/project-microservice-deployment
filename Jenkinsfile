@@ -12,7 +12,7 @@ pipeline {
                 echo "building the docker images.."
                 git credentialsId: 'github-creds', url: 'https://github.com/unicum0212/microservice-project-app.git'
                 dir('microservice-project-app') {
-                    echo "some block"
+                    ls
                 }
             }
         }
