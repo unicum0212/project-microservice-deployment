@@ -7,10 +7,12 @@ pipeline {
     }
 
     stages {
-        stage('test') {
+        stage('build images') {
             steps {
                 script {
-                    echo "success"
+                    echo "building the docker images.."
+                    checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-creds', url: 'https://github.com/unicum0212/microservice-project-app.git']])
+                    ls -l
                 }
             }
         }
