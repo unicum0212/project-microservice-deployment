@@ -1,5 +1,3 @@
-#!/usr/bin/env groovy
-
 pipeline {
     agent any
     tools {
@@ -11,8 +9,8 @@ pipeline {
             steps {
                 echo "building the docker images.."
                 git credentialsId: 'github-creds', url: 'https://github.com/unicum0212/microservice-project-app.git'
-                dir('microservice-project-app') {
-                    ls
+                dir('microservice-project-app/frontend') {
+                    echo "some block"
                 }
             }
         }
