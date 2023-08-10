@@ -16,3 +16,11 @@ terraform {
 
   required_version = "~> 1.0"
 }
+
+terraform {
+  backend "s3" {
+    bucket = "kubernetes.project"
+    key = "terraform/test/terraform.tfstate"
+    region = "eu-central-1"
+  }
+}
