@@ -34,6 +34,7 @@ pipeline {
                         sh "docker build -t ${DOCKER_REPO_SERVER}/users-api:latest ."
                         sh "docker push ${DOCKER_REPO_SERVER}/users-api:latest"
                     }
+                }
             }
         }
     }
