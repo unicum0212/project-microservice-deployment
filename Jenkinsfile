@@ -16,9 +16,24 @@ pipeline {
                     sh "echo $PASS | docker login -u $USER --password-stdin ${DOCKER_REPO_SERVER}"
                     dir("frontend") {
                         sh "docker build -t ${DOCKER_REPO_SERVER}/frontend:latest ."
-                        sh "docker push ${DOCKER_REPO_SERVER}/latest"
+                        sh "docker push ${DOCKER_REPO_SERVER}/frontend:latest"
                     }
-                }
+                    dir("auth-api") {
+                        sh "docker build -t ${DOCKER_REPO_SERVER}/auth-api:latest ."
+                        sh "docker push ${DOCKER_REPO_SERVER}/auth-api:latest"
+                    }
+                    dir("log-message-processor") {
+                        sh "docker build -t ${DOCKER_REPO_SERVER}/log-message-processor:latest ."
+                        sh "docker push ${DOCKER_REPO_SERVER}/log-message-processor:latest"
+                    }
+                    dir("todos-api") {
+                        sh "docker build -t ${DOCKER_REPO_SERVER}/todos-api:latest ."
+                        sh "docker push ${DOCKER_REPO_SERVER}/todos-api:latest"
+                    }
+                    dir("users-api") {
+                        sh "docker build -t ${DOCKER_REPO_SERVER}/users-api:latest ."
+                        sh "docker push ${DOCKER_REPO_SERVER}/users-api:latest"
+                    }
             }
         }
     }
