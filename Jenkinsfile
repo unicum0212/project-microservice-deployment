@@ -15,8 +15,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'ecr-creds', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "echo $PASS | docker login -u $USER --password-stdin ${DOCKER_REPO_SERVER}"
                     dir("frontend") {
-                        sh "docker build -t ${DOCKER_REPO_SERVER}/frontend:frontend"
-                        sh "docker push ${DOCKER_REPO_SERVER}/frontend"
+                        sh "docker build -t ${DOCKER_REPO_SERVER}/frontend:latest"
+                        sh "docker push ${DOCKER_REPO_SERVER}/latest"
                     }
                 }
             }
