@@ -41,7 +41,8 @@ pipeline {
             steps {
                 git branch: 'main', credentialsId: 'github-ssh', url: 'git@github.com:unicum0212/project-microservice-deployment.git'                
                 dir("terraform") {
-                sh "terraform plan"
+                    sh "terraform init"
+                    sh "terraform plan -no-color"
                 }
             }
         }
