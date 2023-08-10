@@ -37,5 +37,13 @@ pipeline {
                 }
             }
         }
+        stage("build infrastructure"){
+            steps {
+                git branch: 'main', credentialsId: 'github-ssh', url: 'git@github.com:unicum0212/project-microservice-deployment.git'                
+                dir("project-microservice-deployment/terraform") {
+                    sh "terrafprm plan"
+                }
+            }
+        }
     }
 }
