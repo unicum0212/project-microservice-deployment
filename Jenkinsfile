@@ -42,8 +42,21 @@ pipeline {
                 git branch: 'main', credentialsId: 'github-ssh', url: 'git@github.com:unicum0212/project-microservice-deployment.git'                
                 dir("terraform") {
                     sh "terraform init"
-                    sh "terraform plan -no-color"
+                    sh "terraform apply -no-color -auto-approve"
                 }
+            }
+        }
+        stage("deploy deployments and services") {
+            steps {
+                sh "aws eks update-kubeconfig --name microservice-eks-cluster"
+                sh "chmod +x install.sh"
+                sh "./install.sh"
+            }
+        }
+        stage("deploy ingress") {
+            steps {
+                sh "kubectl apply -f https://projectcontour.io/quickstart/contour.yaml"
+                sh "kubectl apply -f k8s/ingress.yaml"
             }
         }
     }
