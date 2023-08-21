@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    tools {
+        terraform 'terraform'
+    }
+
+    stages {
+        stage('destroy environment'){
+            steps {
+                git branch: 'main', credentialsId: 'github-ssh', url: 'git@github.com:unicum0212/project-microservice-deployment.git'              
+                dir("terraform"){
+                    sh "terraform init"
+                    sh "terraform apply -destroy -no-color -auto-approve"
+                }  
+            }
+        }
+    }
+}

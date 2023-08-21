@@ -46,6 +46,15 @@ pipeline {
                 }
             }
         }
+        stage("add k8s provider"){
+            steps {
+                dir("terraform") {
+                    sh "cat k8s-provider.txt >> eks.tf"
+                    sh "terraform init"
+                    sh "terraform apply -no-color -auto-approve"
+                }
+            }
+        }
         stage("deploy deployments and services") {
             steps {
                 sh "aws eks update-kubeconfig --name microservice-eks-cluster"
