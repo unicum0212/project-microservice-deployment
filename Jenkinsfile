@@ -60,11 +60,14 @@ pipeline {
                 sh "aws eks update-kubeconfig --name microservice-eks-cluster"
                 sh "chmod +x install.sh"
                 sh "./install.sh"
+
             }
         }
         stage("deploy ingress") {
             steps {
                 sh "kubectl apply -f https://projectcontour.io/quickstart/contour.yaml"
+                sh "chmod +x script.sh"
+                sh "./script.sh"
                 sh "kubectl apply -f k8s/ingress.yaml"
             }
         }

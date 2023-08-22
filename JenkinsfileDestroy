@@ -8,6 +8,7 @@ pipeline {
         stage("destroy ingress"){
             steps {
                 sh "kubectl delete -f k8s/ingress.yaml"
+                sh "kubectl delete -f https://projectcontour.io/quickstart/contour.yaml"
             }
         }
         stage('destroy environment'){
