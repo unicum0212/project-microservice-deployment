@@ -5,12 +5,13 @@ pipeline {
     }
 
     stages {
-        //stage("destroy ingress"){
-        //    steps {
-        //        sh "kubectl delete -f k8s/ingress.yaml"
-        //        sh "kubectl delete -f https://projectcontour.io/quickstart/contour.yaml"
-        //    }
-        //}
+        stage("destroy ingress"){
+            steps {
+                sh "aws eks update-kubeconfig --name microservice-eks-cluster"
+                sh "kubectl delete -f k8s/ingress.yaml"
+                sh "kubectl delete -f https://projectcontour.io/quickstart/contour.yaml"
+            }
+        }
         stage('destroy environment'){
             steps {
                 git branch: 'main', credentialsId: 'github-ssh', url: 'git@github.com:unicum0212/project-microservice-deployment.git'              

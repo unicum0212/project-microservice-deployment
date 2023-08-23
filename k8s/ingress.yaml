@@ -7,23 +7,6 @@ metadata:
 
 spec:
   rules:
-  - host: kubernetes.devdimaops.tech
-    http:
-      paths:
-        - pathType: Prefix
-          path: /
-          backend:
-            service:
-              name: frontend
-              port:
-                number: 80
-        - pathType: Prefix
-          path: "/zipkin"
-          backend:
-            service:
-              name: zipkin
-              port:
-                number: 9411
   - host: ${{ AWS_LB_DNS }}
     http:
       paths:
